@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { toast } from "sonner";
 import { Todo } from "@/types/todo";
 import { AxiosResponse } from "axios";
@@ -5,11 +6,11 @@ import { Inter } from "next/font/google";
 import axiosInstance from "@/config/axios";
 import TodoTable from "@/components/TodoTable";
 import { getCurrentDateTime } from "@/lib/utils";
+import ToogleTheme from "@/components/ToogleTheme";
 import DialogAddTodo from "@/components/DialogAddTodo";
 import TodoTableLoader from "@/components/TodoTable/loader";
 import { useAddTodoMutation, useGetTodoQuery } from "@/service/todo";
 import { FormEventHandler, useCallback, useEffect, useState } from "react";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -85,7 +86,10 @@ export default function Home({ data }: HomeProps) {
         <meta name="description" content="List todos from json typcode" />
       </Head>
       <main className={`min-h-screen px-6 md:px-12 py-8 ${inter.className}`}>
-        <h1 className="text-foreground text-2xl font-bold">Welcome Admin!</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-foreground text-2xl font-bold">Welcome Admin!</h1>
+          <ToogleTheme />
+        </div>
         <p className="text-muted-foreground text-sm">
           This is your todo list that you can find and modified!
         </p>
